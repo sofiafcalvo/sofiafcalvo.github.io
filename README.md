@@ -19,3 +19,15 @@ perl serve.pl 8000
 ```
 
 y abrir http://localhost:8000
+
+## Publicar cambios
+
+El sitio está en GitHub Pages: https://sofiafcalvo.github.io/
+
+Después de editar (por ejemplo `js/content.js`):
+
+```bash
+git add -A && git commit -m "Describe el cambio" && git push
+```
+
+GitHub publica la nueva versión en uno o dos minutos.
