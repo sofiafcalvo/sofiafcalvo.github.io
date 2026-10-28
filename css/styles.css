@@ -81,3 +81,9 @@ body.modalOpen{overflow:hidden}
 .sofi .caseGallery figure[style]{min-width:140px}
 
 .sofi .caseGallery img{background:transparent}
+
+/* CV: sin formación continua, y 7+ / UBA alineados */
+.sofi .toolbox{grid-template-columns:1fr}
+.sofi .resume{align-items:flex-start}
+.sofi .resume strong,.sofi .resume .uba{font-size:40px;line-height:1.2;letter-spacing:-2px;font-weight:500}
+.sofi .resume small{display:block;margin-top:6px}

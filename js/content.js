@@ -8,8 +8,8 @@ window.SITE = {
   photo: "assets/img/foto-sofia.jpeg",
   email: "sofiafcalvob@gmail.com",
   linkedin: "https://www.linkedin.com/in/sofiafcalvo/",
-  // CV descargable. Si en algún momento tenés la versión en inglés, ponela en `en`.
-  cv: { es: "assets/cv/CV-Sofia-Fernandez-Calvo.pdf", en: "assets/cv/CV-Sofia-Fernandez-Calvo.pdf" },
+  // CV descargable en cada idioma
+  cv: { es: "assets/cv/CV-Sofia-Fernandez-Calvo.pdf", en: "assets/cv/Resume-Sofia-Fernandez-Calvo.pdf" },
 
   // Textos generales de la interfaz
   ui: {
@@ -58,8 +58,6 @@ window.SITE = {
       cvMissing: "CV disponible próximamente",
       languages: "Español nativo · Inglés avanzado (B2 / C1)",
       toolbox: "MI CAJA DE HERRAMIENTAS",
-      learning: "FORMACIÓN CONTINUA",
-      course: "Análisis y Tests de Experiencia de Usuario (UX Research)",
       end: "¿Hacemos algo\nbueno en equipo?",
       endText: "Las mejores ideas empiezan con una conversación.",
       pending: "Enlaces de contacto próximamente",
@@ -113,12 +111,10 @@ window.SITE = {
       journey: "Always learning.\nAlways designing.",
       experience: "Years of experience",
       degree: "Graphic Design",
-      cv: "Download CV (PDF, Spanish)",
+      cv: "Download CV (PDF)",
       cvMissing: "CV coming soon",
       languages: "Native Spanish · Advanced English (B2 / C1)",
       toolbox: "MY TOOLBOX",
-      learning: "CONTINUOUS LEARNING",
-      course: "User Experience Analysis & Testing (UX Research)",
       end: "Let’s make something\ngood together.",
       endText: "The best ideas start with a conversation.",
       pending: "Contact links coming soon",
@@ -579,6 +575,5 @@ window.SITE = {
     "Figma · Figma Make · Sketch · Adobe XD · Photoshop · Illustrator",
     "Hotjar · Dovetail · Pendo · A/B Testing · User Journeys · Information Architecture",
     "ChatGPT · Claude · Prompt Engineering · Jira · Confluence · Granola · Notion · Slack · HubSpot · Magento · HTML/CSS"
-  ],
-  courseMeta: "Udemy · 2019"
+  ]
 };

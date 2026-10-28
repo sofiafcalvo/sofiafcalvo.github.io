@@ -151,7 +151,6 @@
       </div>
       <div class="toolbox">
         <div><div class="eyebrow">${esc(u.toolbox)}</div>${S.tools.map((l) => `<p>${esc(l)}</p>`).join("")}</div>
-        <div><div class="eyebrow">${esc(u.learning)}</div><p>${esc(u.course)}</p><small>${esc(S.courseMeta)}</small></div>
       </div>
     </div></section>`;
   }

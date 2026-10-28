@@ -3,6 +3,8 @@
 use strict; use warnings;
 use HTTP::Daemon; use HTTP::Status; use File::Spec;
 my $port = shift || 8000;
+# Servir siempre la carpeta donde está este script
+use FindBin; chdir $FindBin::Bin or die "No se pudo entrar a $FindBin::Bin\n";
 my %types = (html=>'text/html; charset=utf-8', css=>'text/css', js=>'text/javascript', png=>'image/png',
   jpg=>'image/jpeg', jpeg=>'image/jpeg', svg=>'image/svg+xml', pdf=>'application/pdf', json=>'application/json', ico=>'image/x-icon', webp=>'image/webp',
   mp4=>'video/mp4', webm=>'video/webm');
