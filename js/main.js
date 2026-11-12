@@ -76,7 +76,7 @@
     return `<header class="nav"><div class="wrap navin">
       <a class="brand" href="#top"><span class="brandFlower">${flower(34)}</span><span>Sofía<br>Fernández Calvo</span></a>
       <nav class="navlinks" aria-label="${esc(u.mainNav)}">
-        <a href="#work">${esc(u.work)}</a><a href="#about">${esc(u.about)}</a><a href="#cv">CV</a><a href="#contact">${esc(u.contact)}</a>
+        <a href="#work">${esc(u.work)}</a><a href="#about">${esc(u.about)}</a><a href="#cv">${esc(u.cvLabel)}</a><a href="#contact">${esc(u.contact)}</a>
       </nav>
       <div class="langs" aria-label="${esc(u.language)}">
         ${["es", "en"].map((l) => `<button class="${lang === l ? "on" : ""}" aria-pressed="${lang === l}" data-lang="${l}">${l.toUpperCase()}</button>`).join("")}
@@ -167,7 +167,7 @@
     return `<section id="cv" class="cv"><div class="wrap">
       <div class="cvLayout">
         <div class="cvIntro">
-          <div class="eyebrow">03 / CV</div>
+          <div class="eyebrow">03 / ${esc(u.cvLabel.toUpperCase())}</div>
           <h2>${esc(u.journey)}</h2>
           <div class="resume">
             <div><strong>7+</strong><small>${esc(u.experience)}</small></div>
