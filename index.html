@@ -12,6 +12,14 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sofía Fernández Calvo — Product Designer">
   <meta name="twitter:description" content="Diseño de producto, curiosidad y una mirada AI-first. Portfolio de Sofía Fernández Calvo, Buenos Aires.">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    // Aplica el tema (elegido o el del navegador) antes de pintar la página
+    (function () {
+      var t; try { t = localStorage.getItem("theme"); } catch (e) {}
+      document.documentElement.dataset.theme = t || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    })();
+  </script>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#f8f6ee">
   <meta property="og:image" content="https://sofiafcalvo.github.io/assets/og-image.jpg">

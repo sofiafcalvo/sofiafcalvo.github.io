@@ -11,6 +11,22 @@
   let lang = store.get("lang") || ((navigator.language || "es").toLowerCase().startsWith("es") ? "es" : "en");
   if (!S.ui[lang]) lang = "es";
 
+  // Tema: sigue al navegador hasta que la persona elige uno con el botón.
+  // (El <head> ya aplica el tema antes de pintar, para que no parpadee.)
+  const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const systemTheme = () => (darkQuery.matches ? "dark" : "light");
+  const currentTheme = () => document.documentElement.dataset.theme || systemTheme();
+  function applyTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = theme === "dark" ? "#1c1d19" : "#f8f6ee";
+    const btn = root.querySelector("[data-theme-toggle]");
+    if (btn) btn.outerHTML = themeButton(S.ui[lang]);
+  }
+  darkQuery.addEventListener("change", () => {
+    if (!store.get("theme")) applyTheme(systemTheme());
+  });
+
   let openCase = null; // índice del caso abierto
   let openedFromPage = false; // true si se abrió con un clic (para que "Cerrar" vuelva atrás en el historial)
   let lastFocus = null;
@@ -44,6 +60,18 @@
       ? `data-reveal="${key}" style="opacity: 1; transform: none;"`
       : `data-reveal="${key}" style="opacity: 0.8; transform: translateY(18px);"`;
 
+  const sun =
+    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"></path></svg>';
+  const moon =
+    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"></path></svg>';
+
+  // Muestra el ícono del tema al que se cambia (luna en claro, sol en oscuro)
+  const themeButton = (u) => {
+    const dark = currentTheme() === "dark";
+    const label = dark ? u.themeToLight : u.themeToDark;
+    return `<button class="themeToggle" data-theme-toggle aria-label="${esc(label)}" title="${esc(label)}">${dark ? sun : moon}</button>`;
+  };
+
   function header(u) {
     return `<header class="nav"><div class="wrap navin">
       <a class="brand" href="#top"><span class="brandFlower">${flower(34)}</span><span>Sofía<br>Fernández Calvo</span></a>
@@ -53,6 +81,7 @@
       <div class="langs" aria-label="${esc(u.language)}">
         ${["es", "en"].map((l) => `<button class="${lang === l ? "on" : ""}" aria-pressed="${lang === l}" data-lang="${l}">${l.toUpperCase()}</button>`).join("")}
       </div>
+      ${themeButton(u)}
       <a class="pill" href="#contact">${esc(u.talk)}${arrow()}</a>
     </div></header>`;
   }
@@ -299,6 +328,16 @@
 
   // ── Eventos ───────────────────────────────────────────────
   root.addEventListener("click", (e) => {
+    if (e.target.closest("[data-theme-toggle]")) {
+      const next = currentTheme() === "dark" ? "light" : "dark";
+      // Si coincide con el navegador, se olvida la elección y vuelve a seguirlo
+      if (next === systemTheme()) {
+        try { localStorage.removeItem("theme"); } catch (err) {}
+      } else store.set("theme", next);
+      applyTheme(next);
+      root.querySelector("[data-theme-toggle]").focus();
+      return;
+    }
     const langBtn = e.target.closest("[data-lang]");
     if (langBtn) {
       lang = langBtn.dataset.lang;

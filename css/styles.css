@@ -87,3 +87,34 @@ body.modalOpen{overflow:hidden}
 .sofi .resume{align-items:flex-start}
 .sofi .resume strong,.sofi .resume .uba{font-size:40px;line-height:1.2;letter-spacing:-2px;font-weight:500}
 .sofi .resume small{display:block;margin-top:6px}
+
+/* ── Botón de tema ─────────────────────────────────────── */
+.sofi .themeToggle{background:transparent;border:1px solid #292b2430;border-radius:50%;width:34px;height:34px;display:grid;place-items:center;padding:0;flex-shrink:0;transition:transform .25s}
+.sofi .themeToggle:hover{transform:rotate(-15deg)}
+
+/* ── Tema oscuro ───────────────────────────────────────── */
+html[data-theme="dark"]{color-scheme:dark}
+html[data-theme="dark"],html[data-theme="dark"] body{background:#1c1d19}
+[data-theme="dark"] .sofi{--paper:#1c1d19;--ink:#efece2;--sand:#262721;--line:#3b3c34;--muted:#a7a99c;--lav:#3a3352;--chat-surface:#332d48;--momentus:#302d4c;--numia:#4a3127;--green:#2a3223;--pink:#3d2a35;--violet:#a493e6}
+/* Las flores mantienen la carita clara */
+[data-theme="dark"] .sofi svg{--paper:#f8f6ee;--ink:#292b24}
+/* Textos secundarios y bordes que estaban fijos */
+[data-theme="dark"] .sofi .intro p,[data-theme="dark"] .sofi .sectionhead p,[data-theme="dark"] .sofi .cardmeta p,[data-theme="dark"] .sofi .footer p,[data-theme="dark"] .sofi .introfoot,[data-theme="dark"] .sofi .resume small,[data-theme="dark"] .sofi .jobIndex,[data-theme="dark"] .sofi .bottom,[data-theme="dark"] .sofi .caseList,[data-theme="dark"] .sofi .caseSection p{color:var(--muted)}
+[data-theme="dark"] .sofi .circleArrow,[data-theme="dark"] .sofi .count,[data-theme="dark"] .sofi .bottom,[data-theme="dark"] .sofi .footer .bottom{border-color:var(--line)}
+[data-theme="dark"] .sofi .langs,[data-theme="dark"] .sofi .themeToggle{border-color:#efece233}
+[data-theme="dark"] .sofi .langs .on,[data-theme="dark"] .sofi .modal button,[data-theme="dark"] .sofi .intro .pill{color:var(--paper)}
+[data-theme="dark"] .sofi .nav{background:#1c1d19f0;border-bottom-color:#efece215}
+[data-theme="dark"] .sofi .howlist li{border-top-color:#efece226}
+[data-theme="dark"] .sofi .portrait{border-color:#efece220}
+[data-theme="dark"] .sofi .pill{color:#292b24}
+[data-theme="dark"] .sofi .pill:hover{box-shadow:0 7px 0 #00000055}
+[data-theme="dark"] .sofi .pill.ghost{color:var(--ink);border-color:var(--ink)}
+[data-theme="dark"] .sofi .sticker{color:#292b24}
+[data-theme="dark"] .sofi .preview.hasImg img{box-shadow:0 14px 28px #0006}
+[data-theme="dark"] .sofi .card:hover .preview{box-shadow:0 18px 30px #0007}
+[data-theme="dark"] .sofi .modalback{background:#000000a6}
+[data-theme="dark"] .sofi .modal{box-shadow:0 0 0 1px #efece21a}
+[data-theme="dark"] .sofi .caseQuotes blockquote{background:#a493e61f}
+[data-theme="dark"] .sofi .compareTag{color:var(--ink)}
+[data-theme="dark"] .sofi .compareCol.after .compareTag{color:#fff}
+[data-theme="dark"] .sofi button:focus-visible,[data-theme="dark"] .sofi a:focus-visible{outline-color:#a493e6}
