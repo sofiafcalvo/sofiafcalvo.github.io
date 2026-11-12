@@ -36,6 +36,8 @@
     String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const t = (o) => (o && typeof o === "object" ? o[lang] : o);
   const caseHash = (p) => "#caso/" + p.slug;
+  // Todos los casos (proyectos reales + desafíos) se abren igual; el índice es sobre esta lista
+  const allCases = S.projects.concat(S.challenges || []);
 
   // ── Íconos e ilustraciones ────────────────────────────────
   const arrow = () =>
@@ -76,7 +78,7 @@
     return `<header class="nav"><div class="wrap navin">
       <a class="brand" href="#top"><span class="brandFlower">${flower(34)}</span><span>Sofía<br>Fernández Calvo</span></a>
       <nav class="navlinks" aria-label="${esc(u.mainNav)}">
-        <a href="#work">${esc(u.work)}</a><a href="#about">${esc(u.about)}</a><a href="#cv">${esc(u.cvLabel)}</a><a href="#contact">${esc(u.contact)}</a>
+        <a href="#work">${esc(u.work)}</a><a href="#challenges">${esc(u.challenges)}</a><a href="#about">${esc(u.about)}</a><a href="#cv">${esc(u.cvLabel)}</a><a href="#contact">${esc(u.contact)}</a>
       </nav>
       <div class="langs" aria-label="${esc(u.language)}">
         ${["es", "en"].map((l) => `<button class="${lang === l ? "on" : ""}" aria-pressed="${lang === l}" data-lang="${l}">${l.toUpperCase()}</button>`).join("")}
@@ -115,10 +117,10 @@
     const items = S.projects
       .map(
         (p, idx) => `<div class="projectItem project${p.layout}" ${reveal("p" + idx)}>
-        <a class="card" href="${caseHash(p)}" data-case="${idx}" aria-label="${esc(u.more + ": " + p.company + " · " + t(p.title))}">
+        <a class="card" href="${caseHash(p)}" data-case="${idx}" aria-label="${esc(u.more + ": " + t(p.company) + " · " + t(p.title))}">
           <div class="projectNumber">0${idx + 1} / ${esc(t(p.label))}</div>
           ${preview(p)}
-          <div class="cardmeta"><div><h3>${esc(p.company)}</h3><p>${esc(t(p.tags))}</p></div><span class="circleArrow">${arrow()}</span></div>
+          <div class="cardmeta"><div><h3>${esc(t(p.company))}</h3><p>${esc(t(p.tags))}</p></div><span class="circleArrow">${arrow()}</span></div>
           <p class="projectStory">${esc(t(p.title))}</p>
           <span class="readcase">${esc(u.readCase)}${arrow()}</span>
         </a>
@@ -134,13 +136,38 @@
     </div></section>`;
   }
 
+  function challenges(u) {
+    if (!S.challenges || !S.challenges.length) return "";
+    const offset = S.projects.length;
+    const items = S.challenges
+      .map(
+        (p, i) => `<div class="challengeItem" ${reveal("c" + i)}>
+        <a class="card" href="${caseHash(p)}" data-case="${offset + i}" aria-label="${esc(u.more + ": " + t(p.company) + " · " + t(p.title))}">
+          <div class="projectNumber">0${i + 1} / ${esc(t(p.label))}</div>
+          <div class="preview challengePreview hasImg"><img src="${esc((p.thumb || p.cover).url)}" alt="${esc(t(p.thumb || p.cover))}" loading="lazy"></div>
+          <div class="cardmeta"><div><h3>${esc(t(p.company))}</h3><p>${esc(t(p.tags))}</p></div><span class="circleArrow">${arrow()}</span></div>
+          <p class="projectStory">${esc(t(p.title))}</p>
+          <span class="readcase">${esc(u.readCase)}${arrow()}</span>
+        </a>
+      </div>`
+      )
+      .join("");
+    return `<section id="challenges" class="challenges"><div class="wrap">
+      <div class="sectionhead">
+        <div><div class="eyebrow" style="margin-bottom: 13px;">02 / ${esc(u.challenges.toUpperCase())}</div><h2>${esc(u.challengesTitle)}</h2><p>${esc(u.challengesSub)}</p></div>
+        <span class="count">${String(S.challenges.length).padStart(2, "0")}</span>
+      </div>
+      <div class="challengeGrid">${items}</div>
+    </div></section>`;
+  }
+
   function about(u) {
     const how = u.how.map(([h, p]) => `<li><strong>${esc(h)}</strong><span>${esc(p)}</span></li>`).join("");
     return `<section id="about" class="about"><div class="wrap">
       <div class="aboutRibbon">${esc(u.ribbon)}${flower(60, "var(--sage)")}</div>
       <div class="twocol">
         <div ${reveal("about")}>
-          <div class="eyebrow">02 / ${esc(u.about.toUpperCase())}</div>
+          <div class="eyebrow">03 / ${esc(u.about.toUpperCase())}</div>
           <h2>${esc(u.aboutTitle)}</h2>
           ${u.bio.map((b) => `<p class="prose">${esc(b)}</p>`).join("")}
           <div class="availability"><i class="dot"></i><div><strong>${esc(u.availableTitle)}</strong><p>${esc(u.availableText)}</p></div></div>
@@ -167,7 +194,7 @@
     return `<section id="cv" class="cv"><div class="wrap">
       <div class="cvLayout">
         <div class="cvIntro">
-          <div class="eyebrow">03 / ${esc(u.cvLabel.toUpperCase())}</div>
+          <div class="eyebrow">04 / ${esc(u.cvLabel.toUpperCase())}</div>
           <h2>${esc(u.journey)}</h2>
           <div class="resume">
             <div><strong>7+</strong><small>${esc(u.experience)}</small></div>
@@ -192,7 +219,7 @@
     return `<footer id="contact" class="footer"><div class="wrap">
       <div class="twocol">
         <div>
-          <div class="eyebrow" style="margin-bottom: 20px;">04 / ${esc(u.contact.toUpperCase())}</div>
+          <div class="eyebrow" style="margin-bottom: 20px;">05 / ${esc(u.contact.toUpperCase())}</div>
           <h2>${esc(u.end)}</h2><p>${esc(u.endText)}</p>
           <div class="contactlinks">${links}</div>
         </div>
@@ -235,8 +262,8 @@
 
   function modal(u) {
     if (openCase === null) return "";
-    const p = S.projects[openCase];
-    const next = S.projects[(openCase + 1) % S.projects.length];
+    const p = allCases[openCase];
+    const next = allCases[(openCase + 1) % allCases.length];
     const tl = p.tldr;
     const facts = ["role", "context", "time", "focus", "outcome"]
       .filter((k) => tl[k])
@@ -244,7 +271,7 @@
       .join("");
     return `<div class="modalback" data-close>
       <article class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="caseTitle">
-        <div class="caseTop"><span class="eyebrow">${esc(p.company)} · ${esc(t(p.tags))}</span><button class="pill" data-close>${esc(u.close)}</button></div>
+        <div class="caseTop"><span class="eyebrow">${esc(t(p.company))} · ${esc(t(p.tags))}</span><button class="pill" data-close>${esc(u.close)}</button></div>
         <h2 id="caseTitle">${esc(t(p.title))}</h2>
         ${p.note ? `<div class="confidentialNote">${esc(t(p.note))}</div>` : ""}
         <dl class="tldr">${facts}</dl>
@@ -253,7 +280,7 @@
         ${p.blocks.map((b, n) => block(b, n, u)).join("")}
         <div class="caseNav">
           <button class="pill ghost" data-close>${esc(u.backToWork)}</button>
-          <a class="pill" href="${caseHash(next)}" data-next>${esc(u.nextCase)}: ${esc(next.company)}${arrow()}</a>
+          <a class="pill" href="${caseHash(next)}" data-next>${esc(u.nextCase)}: ${esc(t(next.company))}${arrow()}</a>
         </div>
       </article>
     </div>`;
@@ -266,7 +293,7 @@
     document.documentElement.lang = lang;
     root.innerHTML =
       header(u) +
-      `<main id="top">${intro(u)}${work(u)}${about(u)}${cv(u)}</main>` +
+      `<main id="top">${intro(u)}${work(u)}${challenges(u)}${about(u)}${cv(u)}</main>` +
       footer(u) +
       modal(u);
     document.body.classList.toggle("modalOpen", openCase !== null);
@@ -305,7 +332,7 @@
   // ── Rutas: cada caso tiene su link (#caso/slug) ───────────
   function syncFromHash() {
     const m = location.hash.match(/^#caso\/(.+)$/);
-    const idx = m ? S.projects.findIndex((p) => p.slug === m[1]) : -1;
+    const idx = m ? allCases.findIndex((p) => p.slug === m[1]) : -1;
     if (idx >= 0 && idx !== openCase) {
       if (openCase === null) lastFocus = document.activeElement;
       openCase = idx;

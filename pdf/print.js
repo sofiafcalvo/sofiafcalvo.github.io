@@ -45,16 +45,26 @@
 
   // ── Sobre mí + índice de casos ────────────────────────────
   const how = u.how.map(([h, p]) => `<li><strong>${esc(h)}</strong><span>${esc(p)}</span></li>`).join("");
-  const index = S.projects
-    .map(
-      (p, i) => `<a class="indexItem" href="#case-${esc(p.slug)}">
-        <div class="indexThumb p${p.layout}"><img src="${img((p.thumb || p.cover).url)}" alt=""></div>
+  const indexOf = (list) =>
+    list
+      .map(
+        (p, i) => `<a class="indexItem" href="#case-${esc(p.slug)}">
+        <div class="indexThumb p${p.layout ?? 4}"><img src="${img((p.thumb || p.cover).url)}" alt=""></div>
         <span class="indexNum">0${i + 1}</span>
-        <strong>${esc(p.company)}</strong>
+        <strong>${esc(t(p.company))}</strong>
         <em>${esc(t(p.title))}</em>
       </a>`
-    )
-    .join("");
+      )
+      .join("");
+  const index = indexOf(S.projects);
+  const challengesIndex = (S.challenges || []).length
+    ? `<section class="page indexPage">
+    <div class="eyebrow">${esc(u.challengesTitle.toUpperCase())}</div>
+    <h2>${esc(u.challengesSub)}</h2>
+    <div class="indexGrid">${indexOf(S.challenges)}</div>
+    ${footer(u.challengesTitle)}
+  </section>`
+    : "";
   const about = `<section class="page about">
     <div class="aboutGrid">
       <div>
@@ -114,7 +124,7 @@
     return `<section class="caseSection"><div class="secNum">${String(n + 1).padStart(2, "0")}</div><div class="secBody"><h3>${esc(t(b.title))}</h3>${h}</div></section>`;
   }
 
-  const cases = S.projects
+  const casesOf = (list) => list
     .map((p, i) => {
       const tl = p.tldr;
       const facts = ["role", "context", "time", "focus", "outcome"]
@@ -127,20 +137,21 @@
           <div class="caseHead">
             <div>
               <div class="eyebrow">0${i + 1} / ${esc(t(p.label))}</div>
-              <p class="caseCompany">${esc(p.company)} · ${esc(t(p.tags))}</p>
+              <p class="caseCompany">${esc(t(p.company))} · ${esc(t(p.tags))}</p>
               <h2>${esc(t(p.title))}</h2>
               ${p.note ? `<div class="confidentialNote">${esc(t(p.note))}</div>` : ""}
               <dl class="tldr">${facts}</dl>
               <p class="online"><a href="${online}">View this case online ↗</a>${p.link ? ` · <a href="${esc(p.link.url)}">${esc(p.link[lang])} ↗</a>` : ""}</p>
             </div>
-            <figure class="caseCover p${p.layout}"><img src="${img(p.cover.url)}" alt="${esc(t(p.cover))}"></figure>
+            <figure class="caseCover p${p.layout ?? 4}"><img src="${img(p.cover.url)}" alt="${esc(t(p.cover))}"></figure>
           </div>
-          ${footer(p.company)}
+          ${footer(t(p.company))}
         </section>
         <section class="caseFlow">${p.blocks.map((b, n) => block(b, n, p.cover.url)).join("")}</section>
       </article>`;
     })
     .join("");
+  const cases = casesOf(S.projects) + challengesIndex + casesOf(S.challenges || []);
 
   // ── Experiencia y contacto ────────────────────────────────
   const jobs = S.jobs

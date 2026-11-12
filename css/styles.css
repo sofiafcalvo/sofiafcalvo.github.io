@@ -118,3 +118,15 @@ html[data-theme="dark"],html[data-theme="dark"] body{background:#1c1d19}
 [data-theme="dark"] .sofi .compareTag{color:var(--ink)}
 [data-theme="dark"] .sofi .compareCol.after .compareTag{color:#fff}
 [data-theme="dark"] .sofi button:focus-visible,[data-theme="dark"] .sofi a:focus-visible{outline-color:#a493e6}
+
+/* ── Desafíos de diseño ────────────────────────────────── */
+.sofi .challenges{padding:10px 0 85px}
+.sofi .challengeGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px 30px;align-items:start}
+.sofi .challengeItem{min-width:0}
+.sofi .challengePreview{height:240px;background:var(--sand);padding:18px}
+.sofi .challengeItem:nth-child(2) .challengePreview{background:var(--green)}
+.sofi .challengeItem:nth-child(3) .challengePreview{background:var(--lav)}
+.sofi .challengeItem .projectStory{font-size:19px}
+@media(max-width:800px){.sofi .challengeGrid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.sofi .challengeGrid{grid-template-columns:1fr;gap:30px}.sofi .challenges{padding:0 0 55px}}
+.sofi .challengePreview img{object-fit:cover;object-position:top left}
