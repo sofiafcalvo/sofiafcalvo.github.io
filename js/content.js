@@ -159,6 +159,7 @@ window.SITE = {
       tags: { es: "Organizaciones · Arquitectura de información", en: "Organizations · Information architecture" },
       title: { es: "Ordenar una plataforma de agentes de IA para que pueda escalar", en: "Structuring an AI-agent platform so it can scale" },
       cover: { url: "assets/img/numia-org-proyectos.jpg", es: "Nueva vista de proyectos dentro de una organización.", en: "New projects view inside an organization." },
+      thumb: { url: "assets/img/cover-numia-organizaciones.png", fit: "art", es: "Portada del caso.", en: "Case cover." },
       tldr: {
         role: { es: "Product Designer · lideré el diseño de la solución", en: "Product Designer · led the solution design" },
         context: { es: "Journey Builder, plataforma de agentes de IA de Numia", en: "Journey Builder, Numia’s AI-agent platform" },
@@ -244,6 +245,7 @@ window.SITE = {
       tags: { es: "Procesos · Gestión de atención", en: "Processes · Service management" },
       title: { es: "Encadenar trámites para que el cliente no espere de más", en: "Chaining tasks so customers don’t wait longer than needed" },
       cover: { url: "assets/img/numia-procesos-listado.jpg", es: "Listado de procesos con su tipo y cantidad de trámites.", en: "Process list with type and number of tasks." },
+      thumb: { url: "assets/img/cover-numia-procesos.png", fit: "art", es: "Portada del caso.", en: "Case cover." },
       tldr: {
         role: { es: "Product Designer", en: "Product Designer" },
         context: { es: "Plataforma de gestión de atención al cliente de Numia", en: "Numia’s customer-service management platform" },
@@ -316,6 +318,7 @@ window.SITE = {
       tags: { es: "Seguros · E-commerce responsive", en: "Insurance · Responsive e-commerce" },
       title: { es: "Cotizar y contratar seguros, sin salir de la web", en: "Quote and buy insurance, without leaving the web" },
       cover: { url: "assets/img/la-segunda-portada.png", es: "El e-commerce en desktop y mobile.", en: "The e-commerce site on desktop and mobile." },
+      thumb: { url: "assets/img/cover-la-segunda-ecommerce.png", fit: "art", es: "Portada del caso.", en: "Case cover." },
       tldr: {
         role: { es: "UX/UI Designer en Gen IT", en: "UX/UI Designer at Gen IT" },
         context: { es: "Célula ágil junto al cliente", en: "Agile cell together with the client" },
@@ -367,6 +370,7 @@ window.SITE = {
       tags: { es: "Analíticas · Visualización de datos", en: "Analytics · Data visualization" },
       title: { es: "Una página de analytics más clara, más rápida y fácil de usar", en: "A clearer, faster, easier analytics page" },
       cover: { url: "assets/img/conserv-analiticas-despues.jpg", es: "Nueva página de Analytics, con filtros visibles y gráfico principal.", en: "New Analytics page, with visible filters and the main chart." },
+      thumb: { url: "assets/img/cover-conserv-analiticas.png", fit: "art", es: "Portada del caso.", en: "Case cover." },
       tldr: {
         role: { es: "Product Designer en un equipo multidisciplinario", en: "Product Designer in a cross-functional team" },
         context: { es: "Plataforma de monitoreo ambiental, web y app", en: "Environmental monitoring platform, web and app" },
@@ -450,6 +454,7 @@ window.SITE = {
       tags: { es: "Reportes · Investigación", en: "Reports · Research" },
       title: { es: "Entender cómo se usan los reportes antes de rediseñarlos", en: "Understanding how reports are used before redesigning them" },
       cover: { url: "assets/img/conserv-reportes-impreso.jpg", es: "Reporte descargable con gráfico, observaciones y estadísticas.", en: "Downloadable report with chart, observations and statistics." },
+      thumb: { url: "assets/img/cover-conserv-reportes.png", fit: "art", es: "Portada del caso.", en: "Case cover." },
       tldr: {
         role: { es: "Product Designer", en: "Product Designer" },
         context: { es: "Funcionalidad de reportes de Conserv", en: "Conserv’s reporting feature" },
@@ -507,6 +512,7 @@ window.SITE = {
       tags: { es: "Experiencia del paciente · Desktop y mobile", en: "Patient experience · Desktop and mobile" },
       title: { es: "Atención médica a distancia, sin fricciones para el paciente", en: "Remote healthcare, without friction for patients" },
       cover: { url: "assets/img/salud-thumb.jpg", es: "Inicio del paciente en desktop y mobile.", en: "Patient dashboard on desktop and mobile." },
+      thumb: { url: "assets/img/cover-desafio-telemedicina.png", fit: "art", es: "Portada del caso.", en: "Case cover." },
       note: {
         es: "Ejercicio de diseño realizado para una empresa durante un proceso de selección.",
         en: "Design exercise completed for a company as part of a hiring process."
@@ -616,6 +622,7 @@ window.SITE = {
       tags: { es: "Recomendaciones sociales · App mobile", en: "Social recommendations · Mobile app" },
       title: { es: "Recomendaciones de amigos para volver a la plataforma", en: "Friends’ recommendations to bring people back" },
       cover: { url: "assets/img/streaming-thumb.jpg", es: "Listas y estados vacíos en mobile.", en: "Lists and empty states on mobile." },
+      thumb: { url: "assets/img/cover-desafio-streaming.png", fit: "art", es: "Portada del caso.", en: "Case cover." },
       note: {
         es: "Ejercicio de diseño realizado para una empresa durante un proceso de selección.",
         en: "Design exercise completed for a company as part of a hiring process."
@@ -701,6 +708,7 @@ window.SITE = {
       tags: { es: "Pago con QR · Encuesta y prototipos", en: "QR payments · Survey and prototypes" },
       title: { es: "Pagar con QR desde la app del banco: una razón para elegirla", en: "QR payments in a banking app: a reason to choose it" },
       cover: { url: "assets/img/santander-portada.png", es: "Pantallas del flujo de pago con QR.", en: "Screens from the QR payment flow." },
+      thumb: { url: "assets/img/cover-santander-pago-qr.png", fit: "art", es: "Portada del caso.", en: "Case cover." },
       note: {
         es: "Ejercicio técnico pedido por Santander para mi evaluación de ingreso. Por confidencialidad, es el único proyecto que puedo mostrar de mi experiencia en Santander Tecnología.",
         en: "Design exercise requested by Santander as part of my hiring process. Due to confidentiality, it’s the only project I can share from my time at Santander Tecnología."

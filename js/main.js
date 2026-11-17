@@ -52,7 +52,7 @@
 
   const preview = (p) => {
     const img = p.thumb || p.cover;
-    return `<div class="preview p${p.layout} hasImg${img.fit === "contain" ? " fitContain" : ""}"><img src="${esc(img.url)}" alt="${esc(t(img))}" loading="lazy"></div>`;
+    return `<div class="preview p${p.layout} hasImg${img.fit === "contain" ? " fitContain" : ""}${img.fit === "art" ? " artCover" : ""}"><img src="${esc(img.url)}" alt="${esc(t(img))}" loading="lazy"></div>`;
   };
 
   // ── Secciones ─────────────────────────────────────────────
@@ -144,7 +144,7 @@
         (p, i) => `<div class="challengeItem" ${reveal("c" + i)}>
         <a class="card" href="${caseHash(p)}" data-case="${offset + i}" aria-label="${esc(u.more + ": " + t(p.company) + " · " + t(p.title))}">
           <div class="projectNumber">0${i + 1} / ${esc(t(p.label))}</div>
-          <div class="preview challengePreview hasImg"><img src="${esc((p.thumb || p.cover).url)}" alt="${esc(t(p.thumb || p.cover))}" loading="lazy"></div>
+          <div class="preview challengePreview hasImg${(p.thumb||p.cover).fit === "art" ? " artCover" : ""}"><img src="${esc((p.thumb || p.cover).url)}" alt="${esc(t(p.thumb || p.cover))}" loading="lazy"></div>
           <div class="cardmeta"><div><h3>${esc(t(p.company))}</h3><p>${esc(t(p.tags))}</p></div><span class="circleArrow">${arrow()}</span></div>
           <p class="projectStory">${esc(t(p.title))}</p>
           <span class="readcase">${esc(u.readCase)}${arrow()}</span>
