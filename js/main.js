@@ -52,7 +52,7 @@
 
   const preview = (p) => {
     const img = p.thumb || p.cover;
-    return `<div class="preview p${p.layout} hasImg${img.fit === "contain" ? " fitContain" : ""}${img.fit === "art" ? " artCover" : ""}"><img src="${esc(img.url)}" alt="${esc(t(img))}" loading="lazy"></div>`;
+    return `<div class="preview p${p.layout} hasImg${img.fit === "contain" ? " fitContain" : ""}${img.fit === "art" ? " artCover" : ""}"${img.bg ? ` style="background:${esc(img.bg)}"` : ""}><img src="${esc(img.url)}" alt="${esc(t(img))}" loading="lazy"></div>`;
   };
 
   // ── Secciones ─────────────────────────────────────────────
@@ -144,7 +144,7 @@
         (p, i) => `<div class="challengeItem" ${reveal("c" + i)}>
         <a class="card" href="${caseHash(p)}" data-case="${offset + i}" aria-label="${esc(u.more + ": " + t(p.company) + " · " + t(p.title))}">
           <div class="projectNumber">0${i + 1} / ${esc(t(p.label))}</div>
-          <div class="preview challengePreview hasImg${(p.thumb||p.cover).fit === "art" ? " artCover" : ""}"><img src="${esc((p.thumb || p.cover).url)}" alt="${esc(t(p.thumb || p.cover))}" loading="lazy"></div>
+          <div class="preview challengePreview hasImg${(p.thumb||p.cover).fit === "art" ? " artCover" : ""}"${(p.thumb||p.cover).bg ? ` style="background:${esc((p.thumb||p.cover).bg)}"` : ""}><img src="${esc((p.thumb || p.cover).url)}" alt="${esc(t(p.thumb || p.cover))}" loading="lazy"></div>
           <div class="cardmeta"><div><h3>${esc(t(p.company))}</h3><p>${esc(t(p.tags))}</p></div><span class="circleArrow">${arrow()}</span></div>
           <p class="projectStory">${esc(t(p.title))}</p>
           <span class="readcase">${esc(u.readCase)}${arrow()}</span>
@@ -231,7 +231,7 @@
 
   // ── Caso de estudio ───────────────────────────────────────
   const figure = (img, u, cls = "") =>
-    `<figure class="${cls}"${img.width ? ` style="width: ${esc(img.width)}"` : ""}><a href="${esc(img.url)}" target="_blank" rel="noopener" aria-label="${esc(u.enlarge + img[lang])}"><img src="${esc(img.url)}" alt="${esc(img[lang])}" loading="lazy"></a><figcaption>${esc(img[lang])}</figcaption></figure>`;
+    `<figure class="${cls}${img.tall ? " tall" : ""}"${img.width ? ` style="width: ${esc(img.width)}"` : ""}><a href="${esc(img.url)}" target="_blank" rel="noopener" aria-label="${esc(u.enlarge + img[lang])}"><img src="${esc(img.url)}" alt="${esc(img[lang])}" loading="lazy"></a><figcaption>${esc(img[lang])}</figcaption></figure>`;
 
   function block(b, n, u) {
     let html = "";
