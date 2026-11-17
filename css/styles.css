@@ -77,7 +77,7 @@ body.modalOpen{overflow:hidden}
 .sofi .caseSection>.eyebrow{align-self:start;padding-top:7px}
 .sofi .modal:focus{outline:none}
 .sofi .preview.artCover{padding:0;overflow:hidden}
-.sofi .preview.artCover img,.sofi .project4 .preview.artCover img,.sofi .project5 .preview.artCover img{object-fit:cover;object-position:center;border-radius:0;box-shadow:none;background:transparent}
+.sofi .preview.artCover img,.sofi .project4 .preview.artCover img,.sofi .project5 .preview.artCover img{object-fit:cover;object-position:left center;border-radius:0;box-shadow:none;background:transparent}
 .sofi .preview.fitContain img{object-fit:contain;object-position:center;box-shadow:none;background:transparent}
 .sofi .modal h2+.confidentialNote{margin-top:28px}
 .sofi .caseGallery figure[style]{min-width:140px}
