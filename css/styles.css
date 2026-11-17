@@ -77,7 +77,7 @@ body.modalOpen{overflow:hidden}
 .sofi .caseSection>.eyebrow{align-self:start;padding-top:7px}
 .sofi .modal:focus{outline:none}
 .sofi .preview.artCover{padding:0;overflow:hidden}
-.sofi .preview.artCover img,.sofi .project4 .preview.artCover img,.sofi .project5 .preview.artCover img{object-fit:cover;object-position:left center;border-radius:0;box-shadow:none;background:transparent}
+.sofi .preview.artCover img,.sofi .project4 .preview.artCover img,.sofi .project5 .preview.artCover img{object-fit:contain;object-position:center;border-radius:0;box-shadow:none;background:transparent}
 .sofi .preview.fitContain img{object-fit:contain;object-position:center;box-shadow:none;background:transparent}
 .sofi .modal h2+.confidentialNote{margin-top:28px}
 .sofi .caseGallery figure[style]{min-width:140px}
@@ -132,3 +132,9 @@ html[data-theme="dark"],html[data-theme="dark"] body{background:#1c1d19}
 @media(max-width:800px){.sofi .challengeGrid{grid-template-columns:1fr 1fr}}
 @media(max-width:580px){.sofi .challengeGrid{grid-template-columns:1fr;gap:30px}.sofi .challenges{padding:0 0 55px}}
 .sofi .challengePreview img{object-fit:cover;object-position:top left}
+
+/* video del caso y imágenes verticales en galerías */
+.sofi .caseVideo{margin:30px 0 0}
+.sofi .caseVideo video{display:block;width:100%;height:auto;max-height:60vh;border-radius:10px;background:#000}
+.sofi .caseVideo figcaption{margin-top:10px;font-size:13px;color:var(--muted)}
+.sofi .caseGallery figure.tall img{height:auto;aspect-ratio:1.406;object-fit:contain;background:var(--sand)}
